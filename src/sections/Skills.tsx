@@ -15,11 +15,11 @@ const skillCategories = [
     label: 'Frontend',
     icon: Code2,
     skills: [
-      { name: 'React', level: 'avanzado', experience: '1+ año' },
-      { name: 'TypeScript', level: 'intermedio', experience: '8 meses' },
+      { name: 'React', level: 'intermedio', experience: '5 meses' },
+      { name: 'TypeScript', level: 'intermedio', experience: '6 meses' },
       { name: 'JavaScript', level: 'avanzado', experience: '1.5+ años' },
       { name: 'HTML5 / CSS3', level: 'avanzado', experience: '2+ años' },
-      { name: 'Tailwind CSS', level: 'intermedio', experience: '1 año' },
+      { name: 'Tailwind CSS', level: 'intermedio', experience: '5 meses' },
     ],
   },
   {
@@ -27,11 +27,10 @@ const skillCategories = [
     label: 'Backend',
     icon: Terminal,
     skills: [
-      { name: 'Node.js', level: 'intermedio', experience: '8 meses' },
+      { name: 'Node.js', level: 'intermedio', experience: '6 meses' },
       { name: 'Express.js', level: 'intermedio', experience: '6 meses' },
-      { name: 'Python', level: 'basico', experience: '3 meses' },
+      { name: 'Python', level: 'avanzado', experience: '1.5+ años' },
       { name: 'REST APIs', level: 'intermedio', experience: '8 meses' },
-      { name: 'GraphQL', level: 'basico', experience: 'Aprendiendo' },
     ],
   },
   {
@@ -40,9 +39,7 @@ const skillCategories = [
     icon: Database,
     skills: [
       { name: 'PostgreSQL', level: 'intermedio', experience: '6 meses' },
-      { name: 'MongoDB', level: 'intermedio', experience: '8 meses' },
-      { name: 'Firebase', level: 'basico', experience: '4 meses' },
-      { name: 'Prisma ORM', level: 'intermedio', experience: '5 meses' },
+      { name: 'Supabase', level: 'basico', experience: '4 meses' },
     ],
   },
   {
@@ -50,7 +47,7 @@ const skillCategories = [
     label: 'Herramientas',
     icon: Wrench,
     skills: [
-      { name: 'Git / GitHub', level: 'intermedio', experience: '1+ año' },
+      { name: 'Git / GitHub', level: 'intermedio', experience: '1.5+ año' },
       { name: 'VS Code', level: 'avanzado', experience: '2+ años' },
       { name: 'Figma', level: 'intermedio', experience: '6 meses' },
       { name: 'Docker', level: 'basico', experience: 'Aprendiendo' },

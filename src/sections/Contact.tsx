@@ -4,27 +4,26 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'abdlgane.ruiz@gmail.com',
-    href: 'mailto:abdlgane.ruiz@gmail.com',
+    value: 'ariasqz13canal@gmail.com',
+    href: 'mailto:ariasqz13canal@gmail.com',
   },
   {
     icon: Phone,
     label: 'Teléfono',
-    value: '+34 123 456 789',
-    href: 'tel:+34123456789',
+    value: '+57 304619791',
+    href: 'tel:+573046194791',
   },
   {
     icon: MapPin,
     label: 'Ubicación',
-    value: 'Madrid, España',
+    value: 'San Gil, Santander',
     href: '#',
   },
 ];
 
 const socialLinks = [
-  { icon: Github, label: 'GitHub', href: 'https://github.com' },
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com' },
-  { icon: Twitter, label: 'Twitter', href: 'https://twitter.com' },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/ariasqz' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/abdulgane-ruiz-arias-561276389/' }
 ];
 
 export function Contact() {
