@@ -144,7 +144,7 @@ export function Hero() {
               Ver Proyectos
               <ArrowDown className="ml-2 h-5 w-5" />
             </Button>
-            <a href="/cv.pdf" download="../../public/Hoja de vida.docx.pdf">
+            <a href="/Hoja de vida.docx.pdf" download="Hoja de vida - Abdulgane Ruiz Arias.pdf">
               <Button
                 variant="outline"
                 size="lg"

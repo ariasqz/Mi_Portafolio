@@ -1,4 +1,5 @@
 import { Briefcase, GraduationCap, Award, Calendar } from 'lucide-react';
+import { Reveal } from '@/components/Reveal';
 
 const experiences = [
     {
@@ -60,6 +61,11 @@ const certifications = [
     issuer: 'Generacion TIC',
     year: '2024',
   },
+  {
+    title: 'IA sin límites',
+    issuer: 'AWS Entrena Colombia (Tidwit)',
+    year: '2026',
+  },
 ];
 
 export function Experience() {
@@ -67,7 +73,7 @@ export function Experience() {
     <section id="experience" className="py-24 lg:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <Reveal variant="up" className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full border border-sky-500/30 text-sky-400 text-sm font-medium mb-4">
             Experiencia
           </span>
@@ -77,7 +83,7 @@ export function Experience() {
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
             Mi camino en el desarrollo web, desde los primeros pasos hasta donde estoy ahora.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Work Experience */}
@@ -91,56 +97,55 @@ export function Experience() {
 
             <div className="space-y-8">
               {experiences.map((exp, index) => (
-                <div
-                  key={index}
-                  className="relative pl-8 pb-8 border-l-2 border-border last:pb-0 last:border-transparent"
-                >
-                  {/* Timeline Dot */}
-                  <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gradient-primary border-4 border-background" />
+                <Reveal key={index} variant="left" delay={index * 120}>
+                  <div className="relative pl-8 pb-8 border-l-2 border-border last:pb-0 last:border-transparent">
+                    {/* Timeline Dot */}
+                    <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gradient-primary border-4 border-background" />
 
-                  <div className="p-6 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/10">
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-1">{exp.title}</h4>
-                        <p className="text-white/60">
-                          {exp.company} • {exp.location}
-                        </p>
+                    <div className="p-6 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/10">
+                      <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                        <div>
+                          <h4 className="text-lg font-semibold text-white mb-1">{exp.title}</h4>
+                          <p className="text-white/60">
+                            {exp.company} • {exp.location}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-sky-400">
+                          <Calendar className="h-4 w-4" />
+                          {exp.period}
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-sky-400">
-                        <Calendar className="h-4 w-4" />
-                        {exp.period}
+
+                      <p className="text-white/60 mb-4">{exp.description}</p>
+
+                      <div className="space-y-3">
+                        <p className="text-sm font-medium text-white">Logros principales:</p>
+                        <ul className="space-y-2">
+                          {exp.achievements.map((achievement, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start gap-2 text-sm text-white/50"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-sky-400 mt-2 flex-shrink-0" />
+                              {achievement}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                    </div>
 
-                    <p className="text-white/60 mb-4">{exp.description}</p>
-
-                    <div className="space-y-3">
-                      <p className="text-sm font-medium text-white">Logros principales:</p>
-                      <ul className="space-y-2">
-                        {exp.achievements.map((achievement, i) => (
-                          <li
-                            key={i}
-                            className="flex items-start gap-2 text-sm text-white/50"
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {exp.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 rounded-full border border-sky-500/30 text-sky-400 text-xs font-medium"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 mt-2 flex-shrink-0" />
-                            {achievement}
-                          </li>
+                            {tech}
+                          </span>
                         ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {exp.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 rounded-full border border-sky-500/30 text-sky-400 text-xs font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -158,22 +163,21 @@ export function Experience() {
 
               <div className="space-y-6">
                 {education.map((edu, index) => (
-                  <div
-                    key={index}
-                    className="p-5 rounded-xl bg-card border border-border hover:border-sky-500/50 transition-all"
-                  >
-                    <h4 className="font-semibold text-white mb-1">{edu.title}</h4>
-                    <p className="text-sm text-white/60 mb-2">
-                      {edu.institution}
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-sky-400">
-                      <Calendar className="h-4 w-4" />
-                      {edu.period}
+                  <Reveal key={index} variant="right" delay={index * 120}>
+                    <div className="p-5 rounded-xl bg-card border border-border hover:border-sky-500/50 transition-all">
+                      <h4 className="font-semibold text-white mb-1">{edu.title}</h4>
+                      <p className="text-sm text-white/60 mb-2">
+                        {edu.institution}
+                      </p>
+                      <div className="flex items-center gap-2 text-sm text-sky-400">
+                        <Calendar className="h-4 w-4" />
+                        {edu.period}
+                      </div>
+                      <p className="text-sm text-white/50 mt-3">
+                        {edu.description}
+                      </p>
                     </div>
-                    <p className="text-sm text-white/50 mt-3">
-                      {edu.description}
-                    </p>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -189,20 +193,19 @@ export function Experience() {
 
               <div className="space-y-4">
                 {certifications.map((cert, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-sky-500/50 transition-all"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-sky-500/20 flex items-center justify-center flex-shrink-0">
-                      <Award className="h-5 w-5 text-sky-400" />
+                  <Reveal key={index} variant="right" delay={index * 100}>
+                    <div className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-sky-500/50 transition-all">
+                      <div className="w-10 h-10 rounded-lg bg-sky-500/20 flex items-center justify-center flex-shrink-0">
+                        <Award className="h-5 w-5 text-sky-400" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-medium text-sm text-white truncate">{cert.title}</h4>
+                        <p className="text-xs text-white/50">
+                          {cert.issuer} • {cert.year}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-medium text-sm text-white truncate">{cert.title}</h4>
-                      <p className="text-xs text-white/50">
-                        {cert.issuer} • {cert.year}
-                      </p>
-                    </div>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>

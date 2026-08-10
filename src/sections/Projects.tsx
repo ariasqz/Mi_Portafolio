@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Reveal } from '@/components/Reveal';
 
 const categories = ['Todos', 'Web', 'Mobile', 'Diseño'];
 
@@ -27,6 +28,17 @@ const projects = [
   },
   {
     id: 2,
+    title: 'Landing Page',
+    description: 'Landing page para un restaurante, enfocada en mejorar su presencia digital y atraer clientes. La página presenta información clave como el menú, ubicación y contacto, mediante un diseño atractivo, responsive y fácil de navegar. Se optimizó la experiencia del usuario para facilitar el acceso a la información y promover la interacción con el negocio..',
+    category: 'Diseño',
+    image: 'https://res.cloudinary.com/dwhbqktyy/image/upload/v1775829542/Imagen_cussjk.png',
+    tags: ['React', 'TypeScript', 'Tailwind CSS'],
+    demoUrl: 'https://ariasqz.github.io/Restaurante_MaizTostao_page/',
+    githubUrl: 'https://github.com/ariasqz/Restaurante_MaizTostao_page',
+    featured: true,
+  },
+  {
+    id: 3,
     title: 'SVI (Sistema de registro y violencia intrafamiliar)',
     description: 'Desarrollo de plataforma web para el registro y monitoreo de casos de violencia intrafamiliar, orientada a la recolección y análisis de datos mediante visualización en mapas de calor por zonas. Implementé funcionalidades de registro de incidentes utilizando tecnologías como JavaScript, Node.js y Python, integrando herramientas de visualización geoespacial con ArcGIS.',
     category: 'Web',
@@ -37,7 +49,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 3,
+    id: 4,
     title: 'WeatherView',
     description: 'Dashboard responsive a partir de un diseño elegante seleccionado.',
     category: 'Diseño',
@@ -48,7 +60,7 @@ const projects = [
     featured: false,
   },
   {
-    id: 4,
+    id: 5,
     title: 'Dashboard',
     description: 'Dashboard de clima que consume una APIs externas para mostrar información meteorológica y noticias en tiempo real.',
     category: 'Web',
@@ -59,24 +71,12 @@ const projects = [
     featured: false,
   },
   {
-    id: 5,
-    title: 'Landing Page',
-    description: 'Landing page para un restaurante, enfocada en mejorar su presencia digital y atraer clientes. La página presenta información clave como el menú, ubicación y contacto, mediante un diseño atractivo, responsive y fácil de navegar. Se optimizó la experiencia del usuario para facilitar el acceso a la información y promover la interacción con el negocio..',
-    category: 'Diseño',
-    image: 'https://res.cloudinary.com/dwhbqktyy/image/upload/v1775829542/Imagen_cussjk.png',
-    tags: ['Javascript', 'UI/UX', 'CSS3'],
-    demoUrl: 'https://ariasqz.github.io/Restaurante_MaizTostao_page/',
-    githubUrl: 'https://github.com/ariasqz/Restaurante_MaizTostao_page',
-    featured: false,
-  },
-  {
     id: 6,
     title: 'Btc-Whatchdog',
     description: 'Bot que monitorea el precio de Bitcoin en tiempo real y envía alertas a Telegram cuando hay cambios significativos. ',
     category: 'Mobile',
     image: 'https://res.cloudinary.com/dwhbqktyy/image/upload/v1776127855/Imagen_unynw2.png',
     tags: ['Javascript'],
-    demoUrl: null,
     githubUrl: 'https://github.com',
     featured: false,
   },
@@ -90,6 +90,17 @@ const projects = [
     demoUrl: null,
     githubUrl: 'https://github.com/ariasqz/RPG_por_turnos',
     featured: false,
+  },
+  {
+    id: 8,
+    title: 'MenuMind IA',
+    description: 'Generador de menús con inteligencia artificial full-stack. Backend en Node.js/Express con PostgreSQL y Prisma ORM, contenedorizado con Docker, integrado con Google Gemini para generar y personalizar menús automáticamente a partir de las preferencias del usuario.',
+    category: 'Web',
+    image: 'https://res.cloudinary.com/lrfqlvvo/image/upload/v1786334825/Captura_de_pantalla_2026-08-09_a_las_11.05.26_p._m..png',
+    tags: ['Docker', 'Gemini API', 'PostgreSQL','Next.js', 'Node.js', 'Express',  'Prisma'],
+    demoUrl: null,
+    githubUrl: 'https://github.com/ariasqz/MenuMind_IA',
+    featured: true,
   },
 ];
 
@@ -107,7 +118,7 @@ export function Projects() {
     <section id="projects" className="py-24 lg:py-32 bg-muted/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <Reveal variant="up" className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full border border-sky-500/30 text-sky-400 text-sm font-medium mb-4">
             Proyectos
           </span>
@@ -117,17 +128,20 @@ export function Projects() {
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
             Proyectos que he desarrollado para practicar y mejorar mis habilidades como desarrollador.
           </p>
-        </div>
+        </Reveal>
 
         {/* Featured Projects */}
         <div className="mb-16">
-          <h3 className="text-xl font-semibold mb-8 flex items-center gap-2 text-white">
-            <span className="w-2 h-2 rounded-full bg-gradient-primary" />
-            Proyectos Destacados
-          </h3>
+          <Reveal variant="up">
+            <h3 className="text-xl font-semibold mb-8 flex items-center gap-2 text-white">
+              <span className="w-2 h-2 rounded-full bg-gradient-primary" />
+              Proyectos Destacados
+            </h3>
+          </Reveal>
           <div className="grid lg:grid-cols-2 gap-8">
-            {featuredProjects.map((project) => (
-              <Dialog key={project.id}>
+            {featuredProjects.map((project, index) => (
+              <Reveal key={project.id} variant={index % 2 === 0 ? 'left' : 'right'} delay={(index % 2) * 100}>
+              <Dialog>
                 <DialogTrigger asChild>
                   <div className="group cursor-pointer relative overflow-hidden rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-2 hover:shadow-lg hover:shadow-sky-500/10">
                     <div className="aspect-video overflow-hidden">
@@ -195,12 +209,13 @@ export function Projects() {
                   </div>
                 </DialogContent>
               </Dialog>
+              </Reveal>
             ))}
           </div>
         </div>
 
         {/* All Projects Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <Reveal variant="up" className="flex flex-wrap justify-center gap-2 mb-12">
           {categories.map((category) => (
             <Button
               key={category}
@@ -216,12 +231,13 @@ export function Projects() {
               {category}
             </Button>
           ))}
-        </div>
+        </Reveal>
 
         {/* Projects Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
-            <Dialog key={project.id}>
+          {filteredProjects.map((project, index) => (
+            <Reveal key={project.id} variant="up" delay={(index % 3) * 100}>
+            <Dialog>
               <DialogTrigger asChild>
                 <div className="group cursor-pointer p-6 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/10">
                   <div className="flex items-start justify-between mb-4">
@@ -287,6 +303,7 @@ export function Projects() {
                 </div>
               </DialogContent>
             </Dialog>
+            </Reveal>
           ))}
         </div>
       </div>

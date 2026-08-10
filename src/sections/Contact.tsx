@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone, Linkedin, Github} from 'lucide-react';
+import { Reveal } from '@/components/Reveal';
 
 const contactInfo = [
   {
@@ -31,7 +32,7 @@ export function Contact() {
     <section id="contact" className="py-24 lg:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <Reveal variant="up" className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full border border-sky-500/30 text-sky-400 text-sm font-medium mb-4">
             Contacto
           </span>
@@ -42,30 +43,31 @@ export function Contact() {
             ¿Tienes un proyecto en mente? Me encantaría escuchar sobre él.
             Contáctame por cualquiera de estos medios.
           </p>
-        </div>
+        </Reveal>
 
         <div className="flex justify-center">
           <div className="w-full max-w-lg space-y-8">
             <div className="space-y-6">
-              {contactInfo.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 group"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <item.icon className="h-5 w-5 text-black" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-white/50">{item.label}</p>
-                    <p className="font-medium text-white">{item.value}</p>
-                  </div>
-                </a>
+              {contactInfo.map((item, index) => (
+                <Reveal key={item.label} variant="up" delay={index * 100}>
+                  <a
+                    href={item.href}
+                    className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 group"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <item.icon className="h-5 w-5 text-black" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-white/50">{item.label}</p>
+                      <p className="font-medium text-white">{item.value}</p>
+                    </div>
+                  </a>
+                </Reveal>
               ))}
             </div>
 
             {/* Social Links */}
-            <div>
+            <Reveal variant="up" delay={100}>
               <h3 className="text-lg font-semibold mb-4 text-white">Sígueme</h3>
               <div className="flex gap-3">
                 {socialLinks.map((social) => (
@@ -81,20 +83,22 @@ export function Contact() {
                   </a>
                 ))}
               </div>
-            </div>
+            </Reveal>
 
             {/* Availability */}
-            <div className="p-6 rounded-2xl bg-gradient-primary text-black">
-              <h3 className="text-lg font-semibold mb-2">Disponibilidad</h3>
-              <p className="text-black/70 text-sm mb-4">
-                Actualmente estoy buscando oportunidades como desarrollador junior
-                o para colaborar en proyectos interesantes.
-              </p>
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-sm font-medium">Abierto a propuestas</span>
+            <Reveal variant="scale" delay={200}>
+              <div className="p-6 rounded-2xl bg-gradient-primary text-black">
+                <h3 className="text-lg font-semibold mb-2">Disponibilidad</h3>
+                <p className="text-black/70 text-sm mb-4">
+                  Actualmente estoy buscando oportunidades como desarrollador junior
+                  o para colaborar en proyectos interesantes.
+                </p>
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-sm font-medium">Abierto a propuestas</span>
+                </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>

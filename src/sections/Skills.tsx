@@ -8,6 +8,7 @@ import {
   Layers,
   Sparkles,
 } from 'lucide-react';
+import { Reveal } from '@/components/Reveal';
 
 const skillCategories = [
   {
@@ -105,7 +106,7 @@ export function Skills() {
     <section id="skills" className="py-24 lg:py-32 bg-muted/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <Reveal variant="up" className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full border border-sky-500/30 text-sky-400 text-sm font-medium mb-4">
             Habilidades
           </span>
@@ -115,12 +116,12 @@ export function Skills() {
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
             Tecnologías que domino y en las que sigo profundizando cada día.
           </p>
-        </div>
+        </Reveal>
 
         {/* Skills Grid */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {/* Category Tabs */}
-          <div className="lg:col-span-1">
+          <Reveal variant="left" className="lg:col-span-1">
             <div className="space-y-2">
               {skillCategories.map((category) => (
                 <button
@@ -165,10 +166,10 @@ export function Skills() {
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Skills Display */}
-          <div className="lg:col-span-2">
+          <Reveal variant="right" className="lg:col-span-2">
             <div className="p-8 rounded-2xl bg-card border border-border">
               <div className="flex items-center gap-3 mb-8">
                 {currentCategory && (
@@ -217,11 +218,11 @@ export function Skills() {
                 })}
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Tech Cloud */}
-        <div className="text-center">
+        <Reveal variant="up" className="text-center">
           <h3 className="text-xl font-semibold text-white mb-8">Tecnologías que uso</h3>
           <div className="flex flex-wrap justify-center gap-3">
             {technologies.map((tech) => (
@@ -233,7 +234,7 @@ export function Skills() {
               </span>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
