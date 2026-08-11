@@ -47,6 +47,11 @@ const education = [
 
 const certifications = [
   {
+    title: 'IA sin límites',
+    issuer: 'AWS Entrena Colombia (Tidwit)',
+    year: '2026',
+  },
+  {
     title: 'Coursera & IBM',
     issuer: 'Python for Data Science, AI & Development',
     year: '2025',
@@ -60,11 +65,6 @@ const certifications = [
     title: 'Ciberseguridad',
     issuer: 'Generacion TIC',
     year: '2024',
-  },
-  {
-    title: 'IA sin límites',
-    issuer: 'AWS Entrena Colombia (Tidwit)',
-    year: '2026',
   },
 ];
 
