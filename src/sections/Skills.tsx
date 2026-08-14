@@ -19,7 +19,6 @@ const skillCategories = [
       { name: 'React', level: 'intermedio', experience: '5 meses' },
       { name: 'TypeScript', level: 'intermedio', experience: '6 meses' },
       { name: 'JavaScript', level: 'avanzado', experience: '1.5+ años' },
-      { name: 'HTML5 / CSS3', level: 'avanzado', experience: '2+ años' },
       { name: 'Tailwind CSS', level: 'intermedio', experience: '5 meses' },
     ],
   },

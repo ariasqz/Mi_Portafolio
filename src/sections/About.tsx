@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Code2, Palette, Lightbulb, Rocket, Sparkles, Target, Zap, BookOpen } from 'lucide-react';
 import developerWorkingVideo from '@/assets/developer-working.mp4';
+import rocketFlightVideo from '@/assets/rocket-flight.mp4';
 import { Reveal } from '@/components/Reveal';
-
+import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 const highlights = [
   {
     icon: BookOpen,
@@ -57,6 +58,7 @@ export function About() {
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const { ref: shipRef, isVisible: isShipVisible } = useScrollReveal<HTMLDivElement>({threshold: 0.3,});
 
   useEffect(() => {
     const wrapper = videoWrapperRef.current;
@@ -96,10 +98,10 @@ export function About() {
         </Reveal>
 
         {/* Highlights Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20 items-stretch">
           {highlights.map((item, index) => (
-            <Reveal key={item.label} variant="up" delay={index * 100}>
-              <div className="group p-6 lg:p-8 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/10">
+            <Reveal key={item.label} variant="up" delay={index * 100} className="h-full">
+              <div className="group h-full flex flex-col p-6 lg:p-8 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/10">
                 <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <item.icon className="h-6 w-6 text-black" />
                 </div>
@@ -119,20 +121,18 @@ export function About() {
           <Reveal variant="left" className="relative">
             <div
               ref={videoWrapperRef}
-              className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-sky-500/20 to-transparent border border-sky-500/30 p-1"
+              className="aspect-square rounded-3xl overflow-hidden"
             >
-              <div className="w-full h-full rounded-3xl bg-card overflow-hidden">
-                <video
-                  ref={videoRef}
-                  src={developerWorkingVideo}
-                  loop
-                  muted
-                  playsInline
-                  className={`w-full h-full object-cover transition-opacity duration-700 ease-out ${
-                    isVideoVisible ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
-              </div>
+              <video
+                ref={videoRef}
+                src={developerWorkingVideo}
+                loop
+                muted
+                playsInline
+                className={`w-full h-full object-cover transition-opacity duration-700 ease-out ${
+                  isVideoVisible ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
             </div>
 
             {/* Decorative Elements */}
@@ -177,10 +177,10 @@ export function About() {
               ¿Qué puedo hacer por ti?
             </h3>
           </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {services.map((service, index) => (
-              <Reveal key={service.title} variant="up" delay={index * 100}>
-                <div className="group p-6 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-2 hover:shadow-lg hover:shadow-sky-500/10">
+              <Reveal key={service.title} variant="up" delay={index * 100} className="h-full">
+                <div className="group h-full flex flex-col p-6 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-2 hover:shadow-lg hover:shadow-sky-500/10">
                   <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <service.icon className="h-6 w-6 text-black" />
                   </div>
@@ -189,6 +189,28 @@ export function About() {
                 </div>
               </Reveal>
             ))}
+          </div>
+          {/* Spaceship flying across on scroll (straight line, full viewport width via vw units) */}
+          <div
+            ref={shipRef}
+            className="relative h-14 sm:h-24 mt-4"
+          >
+            {isShipVisible && (
+              <div
+                className="absolute top-1/2 left-0 -translate-y-1/2 animate-rocket-fly"
+                aria-hidden="true"
+              >
+                <video
+                  src={rocketFlightVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-24 h-11 sm:w-44 sm:h-20 object-contain"
+                  style={{ mixBlendMode: 'screen' }}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

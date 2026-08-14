@@ -234,12 +234,12 @@ export function Projects() {
         </Reveal>
 
         {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {filteredProjects.map((project, index) => (
-            <Reveal key={project.id} variant="up" delay={(index % 3) * 100}>
+            <Reveal key={project.id} variant="up" delay={(index % 3) * 100} className="h-full">
             <Dialog>
               <DialogTrigger asChild>
-                <div className="group cursor-pointer p-6 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/10">
+                <div className="group cursor-pointer h-full flex flex-col p-6 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/10">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
                       <ArrowUpRight className="h-6 w-6 text-black" />
@@ -252,7 +252,7 @@ export function Projects() {
                   <p className="text-sm text-white/50 mb-4 line-clamp-2">
                     {project.description}
                   </p>
-                  <div className="flex gap-2 flex-wrap">
+                  <div className="flex gap-2 flex-wrap mt-auto">
                     {project.tags.slice(0, 3).map((tag) => (
                       <span key={tag} className="text-xs text-sky-400/70">
                         #{tag}

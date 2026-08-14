@@ -62,6 +62,41 @@
     box-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.3);
   }
 }
+@keyframes rocket-fly {
+  0% {
+    transform: translateX(-40vw);
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(140vw);
+    opacity: 0;
+  }
+}
+
+.animate-rocket-fly {
+  animation: rocket-fly 2.1s linear forwards;
+}
+
+@keyframes flame-flicker {
+  0%, 100% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scaleX(0.65) scaleY(1.2);
+    opacity: 0.55;
+  }
+}
+
+.animate-flame-flicker {
+  animation: flame-flicker 0.15s ease-in-out infinite;
+}
 
 .animate-fade-in {
   animation: fade-in 0.6s ease-out forwards;
