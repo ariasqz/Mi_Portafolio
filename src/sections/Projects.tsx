@@ -123,10 +123,10 @@ export function Projects() {
             Proyectos
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white">
-            Mi <span className="text-gradient">trabajo</span> reciente
+            Lo que puedo <span className="text-gradient">construir</span>
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Proyectos que he desarrollado para practicar y mejorar mis habilidades como desarrollador.
+            Proyectos reales y experimentales que muestran cómo convierto ideas, necesidades y problemas en soluciones funcionales.
           </p>
         </Reveal>
 

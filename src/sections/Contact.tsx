@@ -40,8 +40,7 @@ export function Contact() {
             Trabajemos <span className="text-gradient">juntos</span>
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            ¿Tienes un proyecto en mente? Me encantaría escuchar sobre él.
-            Contáctame por cualquiera de estos medios.
+            ¿Tienes una idea para una página, tienda online o aplicación? Cuéntame qué necesitas y podemos pensar juntos la mejor forma de llevarla a la web.
           </p>
         </Reveal>
 
@@ -88,10 +87,9 @@ export function Contact() {
             {/* Availability */}
             <Reveal variant="scale" delay={200}>
               <div className="p-6 rounded-2xl bg-gradient-primary text-black">
-                <h3 className="text-lg font-semibold mb-2">Disponibilidad</h3>
+                <h3 className="text-lg font-semibold mb-2">¿Hablamos de tu proyecto?</h3>
                 <p className="text-black/70 text-sm mb-4">
-                  Actualmente estoy buscando oportunidades como desarrollador junior
-                  o para colaborar en proyectos interesantes.
+                  Estoy disponible para desarrollar proyectos freelance, colaborar con equipos y ayudarte a convertir una idea en una solución web.
                 </p>
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />

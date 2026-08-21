@@ -2,7 +2,7 @@ import { Heart, ArrowUp } from 'lucide-react';
 
 const navLinks = [
   { label: 'Inicio', href: '#hero' },
-  { label: 'Sobre Mí', href: '#about' },
+  { label: 'Qué puedo hacer', href: '#about' },
   { label: 'Proyectos', href: '#projects' },
   { label: 'Experiencia', href: '#experience' },
   { label: 'Habilidades', href: '#skills' },

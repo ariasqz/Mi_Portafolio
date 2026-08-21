@@ -48,9 +48,8 @@ const skillCategories = [
     icon: Wrench,
     skills: [
       { name: 'Git / GitHub', level: 'intermedio', experience: '1.5+ año' },
-      { name: 'VS Code', level: 'avanzado', experience: '2+ años' },
       { name: 'Figma', level: 'intermedio', experience: '6 meses' },
-      { name: 'Docker', level: 'basico', experience: 'Aprendiendo' },
+      { name: 'Docker', level: 'basico', experience: '3 meses' },
       { name: 'Linux', level: 'intermedio', experience: '1 año' },
     ],
   },
