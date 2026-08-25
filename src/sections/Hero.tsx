@@ -129,7 +129,7 @@ export function Hero() {
             <a href="mailto:ariasqz13canal@gmail.com" aria-label="Enviar correo" className="p-3 rounded-full glass-dark text-white/80 hover:text-sky-400 hover:border-sky-400/50 transition-all hover:-translate-y-1 border border-white/10">
               <Mail className="h-6 w-6" />
             </a>
-            <a href="/Hoja de vida.docx.pdf" download="Hoja de vida - Abdulgane Ruiz Arias.pdf" aria-label="Descargar CV" className="p-3 rounded-full glass-dark text-white/80 hover:text-sky-400 hover:border-sky-400/50 transition-all hover:-translate-y-1 border border-white/10">
+            <a href={`${import.meta.env.BASE_URL}CV-Abdulgane-Ruiz-Arias.pdf`} download="CV - Abdulgane Ruiz Arias.pdf">
               <Download className="h-6 w-6" />
             </a>
           </div>
