@@ -80,7 +80,7 @@ const projects = [
     githubUrl: 'https://github.com',
     featured: false,
   },
-    {
+  {
     id: 7,
     title: 'RPG por turnos ',
     description: 'RPG por turnos en el navegador desarrollado con JavaScript vanilla practicando POO. ',
@@ -97,7 +97,7 @@ const projects = [
     description: 'Generador de menús con inteligencia artificial full-stack. Backend en Node.js/Express con PostgreSQL y Prisma ORM, contenedorizado con Docker, integrado con Google Gemini para generar y personalizar menús automáticamente a partir de las preferencias del usuario.',
     category: 'Web',
     image: 'https://res.cloudinary.com/lrfqlvvo/image/upload/v1786334825/Captura_de_pantalla_2026-08-09_a_las_11.05.26_p._m..png',
-    tags: ['Docker', 'Gemini API', 'PostgreSQL','Next.js', 'Node.js', 'Express',  'Prisma'],
+    tags: ['Docker', 'Gemini API', 'PostgreSQL', 'Next.js', 'Node.js', 'Express', 'Prisma'],
     demoUrl: null,
     githubUrl: 'https://github.com/ariasqz/MenuMind_IA',
     featured: true,
@@ -141,74 +141,83 @@ export function Projects() {
           <div className="grid lg:grid-cols-2 gap-8">
             {featuredProjects.map((project, index) => (
               <Reveal key={project.id} variant={index % 2 === 0 ? 'left' : 'right'} delay={(index % 2) * 100}>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <div className="group cursor-pointer relative overflow-hidden rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-2 hover:shadow-lg hover:shadow-sky-500/10">
-                    <div className="aspect-video overflow-hidden">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="group cursor-pointer relative overflow-hidden rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-2 hover:shadow-lg hover:shadow-sky-500/10">
+                      <div className="aspect-video overflow-hidden">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <div className="flex gap-2 mb-3">
+                          {project.tags.slice(0, 3).map((tag) => (
+                            <Badge key={tag} variant="secondary" className="text-xs bg-sky-500/20 text-sky-400 border-sky-500/30">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                        <h4 className="text-xl font-bold text-white mb-2">{project.title}</h4>
+                        <p className="text-white/70 text-sm line-clamp-2">{project.description}</p>
+                      </div>
+                      <div className="p-6 group-hover:opacity-0 transition-opacity">
+                        <h4 className="text-xl font-bold text-white mb-2">{project.title}</h4>
+                        <div className="flex gap-2 flex-wrap">
+                          {project.tags.slice(0, 3).map((tag) => (
+                            <Badge key={tag} variant="secondary" className="text-xs bg-sky-500/20 text-sky-400 border-sky-500/30">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-3xl bg-card border-border">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl text-white">{project.title}</DialogTitle>
+                      <DialogDescription className="text-white/50">{project.category}</DialogDescription>
+                    </DialogHeader>
+                    <div className="space-y-6">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="w-full rounded-xl"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <div className="flex gap-2 mb-3">
-                        {project.tags.slice(0, 3).map((tag) => (
-                          <Badge key={tag} variant="secondary" className="text-xs bg-sky-500/20 text-sky-400 border-sky-500/30">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                      <h4 className="text-xl font-bold text-white mb-2">{project.title}</h4>
-                      <p className="text-white/70 text-sm line-clamp-2">{project.description}</p>
-                    </div>
-                    <div className="p-6 group-hover:opacity-0 transition-opacity">
-                      <h4 className="text-xl font-bold text-white mb-2">{project.title}</h4>
+                      <p className="text-white/70">{project.description}</p>
                       <div className="flex gap-2 flex-wrap">
-                        {project.tags.slice(0, 3).map((tag) => (
-                          <Badge key={tag} variant="secondary" className="text-xs bg-sky-500/20 text-sky-400 border-sky-500/30">
+                        {project.tags.map((tag) => (
+                          <Badge key={tag} variant="secondary" className="bg-sky-500/20 text-sky-400 border-sky-500/30">
                             {tag}
                           </Badge>
                         ))}
                       </div>
+                      <div className="flex gap-4">
+                        {project.demoUrl && (
+                          <Button
+                            className="bg-gradient-primary text-black font-semibold hover:opacity-90"
+                            onClick={() => window.open(project.demoUrl!, '_blank')}
+                          >
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            Ver Demo
+                          </Button>
+                        )}
+                        {project.githubUrl && (
+                          <Button
+                            variant="outline"
+                            className="border-sky-500/30 text-white hover:bg-sky-500/10"
+                            onClick={() => window.open(project.githubUrl!, '_blank')}
+                          >
+                            <Github className="mr-2 h-4 w-4" />
+                            Código
+                          </Button>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </DialogTrigger>
-                <DialogContent className="max-w-3xl bg-card border-border">
-                  <DialogHeader>
-                    <DialogTitle className="text-2xl text-white">{project.title}</DialogTitle>
-                    <DialogDescription className="text-white/50">{project.category}</DialogDescription>
-                  </DialogHeader>
-                  <div className="space-y-6">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full rounded-xl"
-                    />
-                    <p className="text-white/70">{project.description}</p>
-                    <div className="flex gap-2 flex-wrap">
-                      {project.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary" className="bg-sky-500/20 text-sky-400 border-sky-500/30">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="flex gap-4">
-                      <Button className="bg-gradient-primary text-black font-semibold hover:opacity-90">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Ver Demo
-                      </Button>
-                      {project.githubUrl && (
-                        <Button variant="outline" className="border-sky-500/30 text-white hover:bg-sky-500/10">
-                          <Github className="mr-2 h-4 w-4" />
-                          Código
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
+                  </DialogContent>
+                </Dialog>
               </Reveal>
             ))}
           </div>
@@ -237,72 +246,72 @@ export function Projects() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {filteredProjects.map((project, index) => (
             <Reveal key={project.id} variant="up" delay={(index % 3) * 100} className="h-full">
-            <Dialog>
-              <DialogTrigger asChild>
-                <div className="group cursor-pointer h-full flex flex-col p-6 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/10">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
-                      <ArrowUpRight className="h-6 w-6 text-black" />
+              <Dialog>
+                <DialogTrigger asChild>
+                  <div className="group cursor-pointer h-full flex flex-col p-6 rounded-2xl bg-card border border-border hover:border-sky-500/50 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/10">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
+                        <ArrowUpRight className="h-6 w-6 text-black" />
+                      </div>
+                      <Badge variant="outline" className="border-sky-500/30 text-sky-400">{project.category}</Badge>
                     </div>
-                    <Badge variant="outline" className="border-sky-500/30 text-sky-400">{project.category}</Badge>
+                    <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors">
+                      {project.title}
+                    </h4>
+                    <p className="text-sm text-white/50 mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
+                    <div className="flex gap-2 flex-wrap mt-auto">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className="text-xs text-sky-400/70">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors">
-                    {project.title}
-                  </h4>
-                  <p className="text-sm text-white/50 mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-                  <div className="flex gap-2 flex-wrap mt-auto">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <span key={tag} className="text-xs text-sky-400/70">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </DialogTrigger>
-              <DialogContent className="max-w-2xl bg-card border-border">
-                <DialogHeader>
-                  <DialogTitle className="text-white">{project.title}</DialogTitle>
-                  <DialogDescription className="text-white/50">{project.category}</DialogDescription>
-                </DialogHeader>
-                <div className="space-y-4">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full rounded-xl"
-                  />
-                  <p className="text-white/70">{project.description}</p>
-                  <div className="flex gap-2 flex-wrap">
-                    {project.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="bg-sky-500/20 text-sky-400 border-sky-500/30">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex gap-4">
-                    <Button
-                      className="bg-gradient-primary text-black font-semibold hover:opacity-90"
-                      onClick={() => window.open(project.demoUrl || '', '_blank')}
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Ver Demo
-                    </Button>
-
-                    {project.githubUrl && (
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl bg-card border-border">
+                  <DialogHeader>
+                    <DialogTitle className="text-white">{project.title}</DialogTitle>
+                    <DialogDescription className="text-white/50">{project.category}</DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full rounded-xl"
+                    />
+                    <p className="text-white/70">{project.description}</p>
+                    <div className="flex gap-2 flex-wrap">
+                      {project.tags.map((tag) => (
+                        <Badge key={tag} variant="secondary" className="bg-sky-500/20 text-sky-400 border-sky-500/30">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex gap-4">
                       <Button
-                        variant="outline"
-                        className="border-sky-500/30 text-white hover:bg-sky-500/10"
-                        onClick={() => window.open(project.githubUrl!, '_blank')}
+                        className="bg-gradient-primary text-black font-semibold hover:opacity-90"
+                        onClick={() => window.open(project.demoUrl || '', '_blank')}
                       >
-                        <Github className="mr-2 h-4 w-4" />
-                        Código
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Ver Demo
                       </Button>
-                    )}
+
+                      {project.githubUrl && (
+                        <Button
+                          variant="outline"
+                          className="border-sky-500/30 text-white hover:bg-sky-500/10"
+                          onClick={() => window.open(project.githubUrl!, '_blank')}
+                        >
+                          <Github className="mr-2 h-4 w-4" />
+                          Código
+                        </Button>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </DialogContent>
-            </Dialog>
+                </DialogContent>
+              </Dialog>
             </Reveal>
           ))}
         </div>
